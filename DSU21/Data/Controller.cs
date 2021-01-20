@@ -18,7 +18,7 @@ namespace DSU21.Data
 
             var person = personRepository.GetPerson(id);
             await Task.Delay(0);
-            return new Person { Name = "Erik" }; // ska ju såklart egentligen returnera person
+            return new Person { Firstname = "Erik" }; // ska ju såklart egentligen returnera person
         }
     }
 
@@ -27,8 +27,4 @@ namespace DSU21.Data
         Person GetPerson(int? id);
     }
 
-    public class Person
-    {
-        public string Name { get; set; }
-    }
 }

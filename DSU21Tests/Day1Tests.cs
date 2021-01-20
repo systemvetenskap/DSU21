@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 using DSU21;
-using DSU21.Data;
 using Moq;
 using System.Threading.Tasks;
+using DSU21.Data;
 
 namespace DSU21Tests
 {
@@ -48,13 +48,13 @@ namespace DSU21Tests
         {
             var person = new Person()
             {
-                Name = "Erik"
+                Firstname = "Erik"
             };
             var mock = new Mock<IPersonRepository>();
             var sut = new Controller(mock.Object);
             mock.Setup(x => x.GetPerson(It.IsAny<int>())).Returns(await Task.FromResult<Person>(person));
             var actual = await sut.GetPerson(2);
-            Assert.Equal(actual.Name, person.Name);
+            Assert.Equal(actual.Firstname, person.Firstname);
 
             mock.Verify(x => x.GetPerson(2), Times.Exactly(1));
 
